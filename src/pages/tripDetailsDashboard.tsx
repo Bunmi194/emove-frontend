@@ -18,6 +18,8 @@ interface tripDetailsType {
 export const TripDetailsDashboard = () => {
   const location = useLocation();
   const [ tripDetails, setTripDetails ] = useState<tripDetailsType>({});
+  const [ loading, setLoading ] = useState(false);
+
   const today = new Date();
   console.log("value:",location.state);
   const date = today.getMonth();
@@ -54,6 +56,7 @@ const userIdInStorage = JSON.parse(`${localStorage.getItem("userDetails")}`).use
 
 
 const handleClick = async (e:any) => {
+  setLoading(true);
   const response = await fetch(`https://emove-teamc-new.onrender.com/v1/users/booktrip/`, {
     method: "POST",
     headers: {
@@ -70,6 +73,7 @@ const handleClick = async (e:any) => {
     //update user's record
     ///user/:id
     // console.log("IID: ", id)
+    setLoading(false);
     console.log("userIdInStorage: ", userIdInStorage)
     const userData = await fetch(`https://emove-teamc-new.onrender.com/v1/users/user/${userIdInStorage}`);
     const result = await userData.json();
@@ -83,6 +87,7 @@ const handleClick = async (e:any) => {
     navigate("/user/book_trip");
     return;
   }
+  setLoading(false);
   alert("Failed to book trip");
   navigate("/user/book_trip");
   return;
@@ -151,7 +156,7 @@ const handleClick = async (e:any) => {
                   </div>
                 </div>
                 <div className='tripdetails-button'>
-                  {<Button text={'Book a Trip'} additionalClasses={'successButton dashboardButton'} handleClick={handleClick}/>}
+                  {<Button text={`${loading? "Booking" : "Book a Trip"}`} additionalClasses={'successButton dashboardButton'} handleClick={handleClick}/>}
                 </div>
               </div>
             }

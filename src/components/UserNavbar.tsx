@@ -39,7 +39,7 @@ export const UserNavbar = () => {
         <div className='logo'>
           <div className='sign-road-icon'>
             <RoadIcon />
-            <h2 className='signup-icon-text'>E-Move</h2>
+            <Link to="/"><h2 className='signup-icon-text'>E-Move</h2></Link>
           </div>
         </div>
         <div className='routes-container'>
