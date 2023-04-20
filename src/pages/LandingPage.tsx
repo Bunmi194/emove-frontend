@@ -3,6 +3,7 @@ import LandingPageBody from '../components/LandingPageBody';
 import Header from '../components/LandingPageHeader';
 import Footer from '../components/LandingPageFooter';
 import { Layout } from '../Layouts/Layout';
+// import Typical from "react-typical";
 
 const LandingPage: React.FC = () => {
   return (
