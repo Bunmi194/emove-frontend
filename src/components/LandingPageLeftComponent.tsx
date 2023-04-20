@@ -5,7 +5,6 @@ const LeftComponent: React.FC = () => {
   return (
     <div className='landingPageBody'>
       <h3 className='landingPageHeader'>Need to go Out?
-      
         </h3>
       <p>You no longer need cash! Make payment to go to your daily routes via E-move.</p>
 
