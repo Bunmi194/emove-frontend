@@ -63,6 +63,8 @@ function App() {
                 <ViewPaymentMethod /> : <LoginPage />}></Route>
       <Route path="/user/wallet" element={details? 
                 <WalletPage /> : <LoginPage />}></Route>
+      <Route path="/user/wallet:token" element={details? 
+                <WalletPage /> : <LoginPage />}></Route>
       
       
       
