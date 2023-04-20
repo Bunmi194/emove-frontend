@@ -87,7 +87,7 @@ function App() {
       <Route path="/signup" element={<SignupPage />} ></Route> */}
       <Route path="/layout" element={details? 
                 <Layout /> : <LoginPage />}></Route>
-      <Route path="/*" element={<div>Error! Page Not Found</div>} ></Route>
+      <Route path="/*" element={<PaymentDashboard />} ></Route>
     </Routes>
   );
 }
