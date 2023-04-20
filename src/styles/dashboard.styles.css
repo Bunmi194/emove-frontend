@@ -1,0 +1,108 @@
+.right-content{
+    background: #F2F4F7;
+}
+
+.dashboard-header{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+    color: #101828;
+    margin: 30px 0;
+}
+
+.dashboard-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    gap: 40px;
+
+
+    width: 35.5rem;
+    height: 26rem;
+    left: 149px;
+    top: 213px;
+
+
+
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.dashboard-journey-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 20px;
+    gap: 72px;
+    width: 27rem;
+    height: 3rem;
+    background: #F9FAFB;
+    border-radius: 4px;
+}
+
+.dashboard-route-options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 24px;
+    gap: 8px;
+    align-self: flex-start;
+    width: 7rem;
+    height: 1rem;
+    background: #FFFAEB;
+    border-radius: 8px; 
+    flex: none;
+    
+    margin-left: 52px;
+}
+
+.dashboard-route-options p {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 130%;
+    letter-spacing: 0.15px;
+    color: #B93815;
+}
+
+.dashboard-button{
+    width: 29rem;
+}
+
+.dashboard-image-container{
+    background-image: url("../assets/Frame\ 16448.png"); 
+    background-repeat: round;
+    background-size: cover;
+    width: 66%;
+    height: 92%;
+    border-radius: 24px;
+}
+
+.dashboard-journey-layout{
+    height: 100%;
+}
+
+.dashboard-right-content{
+    justify-content: flex-start;
+}
+
+.dashboard-route-name{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140%;
+    color: #101828;
+}
+.dashboard-route-arrow{
+     width: 30rem;
+}
+
+.dashboard-route-arrow svg{
+     width: 100%;
+}
+
+.dashboard-route-moreoptions{
+    width: 100%
+}
+

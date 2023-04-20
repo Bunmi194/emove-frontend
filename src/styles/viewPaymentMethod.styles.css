@@ -1,0 +1,109 @@
+.viewpayment-header{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: #101828;
+}
+
+right-content{
+    background: #F2F4F7;
+}
+
+
+.viewpayment-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+    gap: 30px;
+    width: 35.5rem;
+    height: 25rem;
+    left: 149px;
+    top: 213px;
+    border-radius: 8px;
+    
+}
+
+.viewpayment-card{
+    background-image: url("../assets/mastercard.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30%;
+    height: 30%;
+    border-radius: 4px;
+}
+
+.viewpayment-payment-choice{
+    display: flex;
+    align-items: center;
+}
+
+.viewpayment-header-payment-choice{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+    color: #101828;
+    margin: 10px 0;
+}
+
+.viewpayment-right-content{
+    align-items: flex-start;
+}
+
+.viewpayment-carddetails-content{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: #101828;
+}
+
+.viewpayment-carddetails-head{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: #98A2B3;
+}
+
+.viewpayment-viewcard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.viewpayment-editbutton{
+    display: flex;
+    align-items: center;
+    border: 1px solid #98A2B3;
+    border-radius: 4px;
+    padding: 16px 10px;
+     cursor: pointer;
+}
+
+.viewpayment-editbutton span{
+     margin-left: 10px;
+}
+
+.viewpayment-deletebutton{
+    display: flex;
+    align-items: center;
+     cursor: pointer;
+}
+
+.viewpayment-deletebutton span{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: #F04438;
+   
+}

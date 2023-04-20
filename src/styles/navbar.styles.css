@@ -1,0 +1,79 @@
+.navigation{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.logo{
+
+}
+
+.routes{
+    display: flex;
+}
+
+.route {
+    list-style: none;
+    margin-right: 32px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: #101828;
+    text-decoration: none;
+}
+
+.route a{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: #101828;
+}
+.route:active{
+    color: #F79009;
+}
+
+.dropdown{
+    display: flex;
+    margin: 10px 0px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: #101828;
+}
+
+.navbar-icon-text{
+    margin-left: 10px;
+    color: #012A4A;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+    text-decoration: none;
+    background: white;
+
+}
+
+.user-nav-dropdown{
+
+    margin: 10px 0px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: #101828;
+    
+
+}
+.user-dropdown-button{
+  
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+}
+
+.link-active{
+    color: #F79009 !important;
+}

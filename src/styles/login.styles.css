@@ -1,0 +1,139 @@
+
+.login-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: #F2F4F7;;
+}
+
+.left-content-container{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    height: 93%;
+    width: 26.25rem;
+}
+
+.login-icon-container{
+    display: flex;
+    margin-bottom: 4rem;
+}
+
+.sign-road-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-icon-text{
+    margin-left: 10px;
+    color: #012A4A;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+
+}
+
+.login-header-text{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #012A4A;
+    margin-bottom: 3rem;
+}
+
+.login-form-items{
+    width: 26.25rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* margin-top: -15px; */
+    padding-top: 0rem;
+}
+
+ .login-form-items label {
+    color: #012a4a;
+    font-weight: 600;
+    margin: 8px;
+  }
+  .login-form-items input {
+    width: 95%;
+    max-width: 100%;
+    padding: 0.6rem 6px;
+    outline: none;
+    margin-top: 3px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #98a2b3;
+  }
+
+.login-form-btn{
+    padding: 0.85em 1.2em;
+    border-radius: 5px;
+    margin: 20px 0;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    background: #f79009;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s;
+    align-items: center;
+    width: 98%;
+    cursor: pointer;
+    border: unset;
+}
+
+
+ .sign-login-link {
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #101828;
+  
+  }
+  .sign-login-link a {
+    color: #f79009;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 0.4rem;
+  }
+
+  .login-forgot-password{
+        font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1570EF;
+  }
+
+  /* Right content */
+
+  .login-image-container{
+    width: 90%;
+    height: 80%;
+
+  }
+
+  .login-image-container img {
+    width: 100%;
+    border-radius: 24px;
+  }
+
+  .login-custom-layout .login-left-content, .login-right-content{
+    padding-top: 1rem;
+  }
+  .login-image-container{
+    background-image: url("../assets/sign-up-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+     width: 83%;
+    height: 93%;
+    border-radius: 24px;
+    /* height:  */
+  }
+
+ 

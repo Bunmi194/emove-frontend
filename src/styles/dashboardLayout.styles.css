@@ -1,0 +1,20 @@
+.dashboard-layout-containers{
+    height: 100%;
+}
+
+.dashboard-layout-header{
+    width: 79% !important;
+    height: 15%;
+    margin: 0 auto;
+    justify-content: flex-start; 
+
+}
+
+.dashboard-layout-bodyContainer{
+   background: #F9FAFB;
+
+}
+
+.dashboard-layout-sidebar{
+    height: 100%;
+}

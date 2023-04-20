@@ -1,0 +1,129 @@
+right-content{
+    background: #F2F4F7;
+}
+
+.walletpage-header{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+    color: #101828;
+    margin: 30px 0;
+}
+
+.walletpage-balance-card{
+      display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    gap: 72px;
+    width: 68rem;
+    height: 9rem;
+    background: #EAECF0;
+
+    border-radius: 4px;
+}
+
+.walletpage-card-description-header{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: #475467;
+}
+
+
+.walletpage-card-description-content{
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 110%;
+    color: #101828;
+    text-align: center;
+}
+
+.walletpage-fundwallet{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 24px;
+    gap: 8px;
+    justify-content: center;
+    align-self: center;
+    width: 6rem;
+    height: 1rem;
+    background: #FFFAEB;
+    border-radius: 8px; 
+    
+    margin-left: 52px;
+}
+
+.walletpage-fundwallet a {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 130%;
+    letter-spacing: 0.15px;
+    color: #B93815;
+    text-decoration: none;
+}
+
+.walletpage-transaction{
+     width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.walletpage-transaction-subheaders{
+  display: flex;
+    justify-content: space-around;
+    gap: 33rem;
+    padding-top: 3rem;
+
+}
+
+.walletpage-transaction-list{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+.walletpage-transaction-list-empty{
+    text-align: center;
+}
+
+.walletpage-transaction-list-empty-header{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140%;
+    display: flex;
+    justify-content: center;
+    color: #101828;
+
+}
+.walletpage-transaction-list-empty-innerText{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: #98A2B3;
+
+}
+
+.walletpage-closeModal{
+    border: none;
+     background: none;
+     font-size: 1.5rem;
+     font-weight: 700;
+}
+
+.walletpage-fundwallet button{
+    border: none;
+    background: none;
+    color: #B93815;
+    
+}

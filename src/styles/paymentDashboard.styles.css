@@ -1,0 +1,53 @@
+
+.paymentdashboard-header{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+    color: #101828;
+    margin: 30px 0;
+}
+
+
+
+.right-content{
+    background: #F2F4F7;
+}
+
+
+.paymentdashboard-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+    gap: 30px;
+    width: 35.5rem;
+    height: 25rem;
+    left: 149px;
+    top: 213px;
+    border-radius: 8px;
+    
+}
+
+.paymentdashboard-card{
+    background-image: url("../assets/creditcardimage.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 70%;
+    height: 45%;
+    border-radius: 4px;
+}
+
+.paymentdashboard-payment-choice{
+    display: flex;
+    align-items: center;
+}
+
+.paymentdashboard-header-payment-choice{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+    color: #101828;
+    margin: 10px 0;
+}

@@ -1,0 +1,43 @@
+
+.more-routes-list{
+    /* width: 100%; */
+    /* max-width:100%; */
+    max-width: 100%;
+    list-style:none;
+    padding: 5px;
+    height: fit-content;
+    /* overflow-y: scroll; */
+    margin-left: 3rem;
+    border: none;
+    background: #FFFAEB;
+    color: #B93815;
+}
+
+  .more-routes-list-items{
+    width: 100%;
+    max-width:100%;
+    text-align:left;
+    margin: 10px 0;
+    padding: 10px 0;
+   
+  }
+
+
+  .more-routes-list-items:hover{
+    background: #F9FAFB;
+  }
+
+
+.more-routes-list-items  a{
+    width: 100%;
+    display: block;
+    text-decoration:none;
+   font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+letter-spacing: 0.15px;
+color: #101828;
+  }
+

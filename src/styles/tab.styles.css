@@ -1,0 +1,23 @@
+.tab{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* color: white;
+    background-color: #F79009 ; */
+}
+
+
+.dashboard-icon{
+    background: #F79009;
+}
+
+.tab-active{
+    background: #F79009;
+    color: white;
+    padding: 12px 6px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 85%;
+
+}
