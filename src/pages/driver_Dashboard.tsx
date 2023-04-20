@@ -1,4 +1,4 @@
-import Form from "../components/Form_";
+import Form from "../components/Form";
 import "../styles/_driverDashboard.styles.css"
 import rec from "../assets/rec.png";
 import { Link } from "react-router-dom";

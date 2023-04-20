@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Layout } from '../Layouts/Layout'
 import { RoadIcon } from '../assets/RoadIcon'
 import '../styles/login.styles.css'
-import SignUpImage from '../assets/sign-up-image.png';
+// import SignUpImage from '../assets/sign-up-image.png';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("")

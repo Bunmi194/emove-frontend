@@ -1,5 +1,4 @@
-import "../styles/actions.styles.css"
-import { useContext } from "react";
+import "../styles/actions.styles.css";
 //import { ModalContext } from "../../context/dashboardContext";
 
 export const Actions = () => {

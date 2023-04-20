@@ -3,13 +3,13 @@ import '../styles/walletPage.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import {  UserNavbar } from '../components/UserNavbar'
 import { Layout } from '../Layouts/Layout'
-import { Button } from '../components/Button'
-import { CardBulletPoint } from '../components/CardBulletPoint'
+// import { Button } from '../components/Button'
+// import { CardBulletPoint } from '../components/CardBulletPoint'
 import { FileIcon } from '../components/FileIcon'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import Modal from 'react-modal';
+import {  useNavigate } from 'react-router-dom'
+// import Modal from 'react-modal';
 import { FormModal } from '../components/FormModal'
-import { FaTimes } from 'react-icons/fa'
+// import { FaTimes } from 'react-icons/fa'
 import ReactModal from 'react-modal'
 
 
@@ -61,6 +61,7 @@ export const WalletPage = () => {
     }
     updateUser();
     fetchTransactions()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [payment]);
 
 

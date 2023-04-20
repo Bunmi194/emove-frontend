@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Layout } from '../Layouts/Layout'
 import { Sidebar } from '../components/Sidebar'
 import { AdminNavbar } from '../components/AdminNavbar'
-import { ModalContext } from '../context/admindashContext'
+// import { ModalContext } from '../context/admindashContext'
 import { Actions } from "../components/Actions";
 import "../styles/adminViewDriversPage.styles.css";
 import man2 from "../assets/sign-up-image.png"
 import Profile from "../components/Profile";
-import { EditAndDeleteDriverModal } from "../components/EditAndDeleteDriverModal";
+// import { EditAndDeleteDriverModal } from "../components/EditAndDeleteDriverModal";
 import ReactModal from 'react-modal'
 
 

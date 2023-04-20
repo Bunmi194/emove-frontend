@@ -14,17 +14,14 @@ import { Layout } from './Layouts/Layout';
 import { SignUpPage } from './pages/signUpPage';
 import { LoginPage } from './pages/loginPage';
 import { DashboardPage } from './pages/dashboardPage';
-import { DashboardLayout } from './Layouts/DashboardLayout';
 //import { Navbar } from './components/UserNavbar';
 import './styles/dashboard.styles.css'
-import { Button } from './components/Button';
 import { TripDetailsDashboard } from './pages/tripDetailsDashboard';
 import { PaymentDashboard } from './pages/paymentDashboard';
 import { ViewPaymentMethod } from './pages/viewPaymentMethod';
 import { WalletPage } from './pages/walletPage';
 import { MoreRoutes } from './components/MoreRoutes';
 import { AdminPricingPage } from './pages/AdminPricingPage';
-import { FormModal } from './components/FormModal';
 import { AdminDriversPage } from './pages/AdminDriversPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { AdminViewDriversPage } from './pages/AdminViewDriversPage';

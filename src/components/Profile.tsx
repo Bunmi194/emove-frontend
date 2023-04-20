@@ -1,4 +1,4 @@
-import { FaEdit, FaTimes } from 'react-icons/fa'
+import { FaEdit } from 'react-icons/fa'
 import "../styles/profile.styles.css"
 
 import man from '../assets/sign-up-image.png'

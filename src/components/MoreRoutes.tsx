@@ -12,7 +12,8 @@ import "../styles/moreroutes.styles.css"
 
 export const MoreRoutes = () => {
     const [routes, setRoutes] = useState<IRoute[]>([]);
-    const [selectedValue, setSelectedValue] = useState("")
+    // const [selectedValue, setSelectedValue] = useState("")
+    const selectedValue = ""
     useEffect(() => {
         const getRoutes = async() => {
             const response = await fetch(`https://emove-teamc-new.onrender.com/v1/routes/getAllRoutes`)

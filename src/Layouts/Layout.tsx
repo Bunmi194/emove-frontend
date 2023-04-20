@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode } from 'react'
 import '../styles/layout.styles.css'
 export const Layout: React.FC<{
   leftContent?: ReactNode

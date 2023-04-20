@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Layout } from '../Layouts/Layout'
 import {  UserNavbar } from '../components/UserNavbar'
 import '../styles/dashboard.styles.css'
-import { Card } from '../components/Card'
+// import { Card } from '../components/Card'
 import { Button } from '../components/Button'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Arrow } from '../components/Arrow'
-import { FaChevronDown } from 'react-icons/fa'
-import { Link, useNavigate, NavigateOptions } from 'react-router-dom'
-import { MoreRoutes } from '../components/MoreRoutes'
+// import { FaChevronDown } from 'react-icons/fa'
+import {  useNavigate } from 'react-router-dom'
+// import { MoreRoutes } from '../components/MoreRoutes'
 
 
 export const DashboardPage = () => {
@@ -43,6 +43,7 @@ export const DashboardPage = () => {
     navigate('/user/trip_details', { state: selectedValue });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleMore = () => {
     setMore(!more)
   }

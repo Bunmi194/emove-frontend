@@ -2,12 +2,13 @@ import { MouseEventHandler, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import { Layout } from '../Layouts/Layout'
-import { StyledForgotPassword } from '../styles/forgotPassword.styles'
+// import { StyledForgotPassword } from '../styles/forgotPassword.styles'
 import getParam from '../utils/getParams'
 
 export const ResetPassword = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()

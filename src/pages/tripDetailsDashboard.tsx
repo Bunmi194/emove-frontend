@@ -7,7 +7,7 @@ import { Button } from '../components/Button'
 import { Sidebar } from '../components/Sidebar';
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
-import { response } from 'express'
+// import { response } from 'express'
 
 interface tripDetailsType {
   pickUpStation?: string;
@@ -23,7 +23,7 @@ export const TripDetailsDashboard = () => {
   const today = new Date();
   console.log("value:",location.state);
   const date = today.getMonth();
-  const date2 = today.getDate();
+  // const date2 = today.getDate();
   // console.log("local: ", JSON.parse(`${localStorage.getItem('userDetails')}`))
   const navigate = useNavigate();
 
@@ -112,6 +112,7 @@ const handleClick = async (e:any) => {
   
   
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(getRouteData, []);
   // console.log("tripDetails: ",tripDetails)
 

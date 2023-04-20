@@ -3,8 +3,8 @@ import '../styles/paymentDashboard.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { UserNavbar } from '../components/UserNavbar'
 import { Layout } from '../Layouts/Layout'
-import { Button } from '../components/Button'
-import { CardBulletPoint } from '../components/CardBulletPoint'
+// import { Button } from '../components/Button'
+// import { CardBulletPoint } from '../components/CardBulletPoint'
 
 
 export const PaymentDashboard = () => {
@@ -40,6 +40,7 @@ export const PaymentDashboard = () => {
 
   useEffect(()=> {
     fetchTripDetails()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

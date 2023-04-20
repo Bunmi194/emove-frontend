@@ -3,7 +3,7 @@ import '../styles/viewPaymentMethod.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import {  UserNavbar } from '../components/UserNavbar'
 import { Layout } from '../Layouts/Layout'
-import { Button } from '../components/Button'
+// import { Button } from '../components/Button'
 import { DeleteIcon } from '../components/DeleteIcon'
 import { EditButtonIcon } from '../components/EditButtonIcon'
 

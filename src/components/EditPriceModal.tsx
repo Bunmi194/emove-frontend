@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Card } from './Card'
 import '../styles/signup.styles.css'
 import { Button } from './Button'
-import { FaTimes } from 'react-icons/fa'
 
 
 
@@ -12,11 +11,10 @@ export const EditPriceModal = () => {
     const [showModal, setShowModal] = useState(false)
 
 
-    const handleOpenModal = () => {
-        setShowModal(true)   
-    }
+    
   const handleCloseModal = () => {
-     setShowModal(false)   
+     setShowModal(false);
+     return showModal
   }
     
     const onHandleClick = (e:any) => {

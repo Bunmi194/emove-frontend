@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import '../styles/adminpricingpage.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Layout } from '../Layouts/Layout'
-import { Button } from '../components/Button'
+// import { Button } from '../components/Button'
 import { Sidebar } from '../components/Sidebar'
 import { AdminNavbar } from '../components/AdminNavbar'
-import { ModalContext } from '../context/admindashContext'
-import EditPrice from '../components/EditPage'
+// import { ModalContext } from '../context/admindashContext'
+// import EditPrice from '../components/EditPage'
 import { Link } from 'react-router-dom'
-import Form_ from '../components/Form_'
+import Form from '../components/Form'
 
 export const AdminDriversPage = () => {
   // const { modals, setModals }:any = useContext(ModalContext)
@@ -41,7 +41,7 @@ export const AdminDriversPage = () => {
               <main>
              
                 <div className='bottom'>
-                  <Form_ />
+                  <Form />
                 </div>
               </main>
             }

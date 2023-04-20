@@ -1,5 +1,4 @@
 import React from 'react';
-import Typical from "react-typical";
 
 const LeftComponent: React.FC = () => {
   return (

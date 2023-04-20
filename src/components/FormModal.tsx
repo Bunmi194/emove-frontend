@@ -2,27 +2,24 @@ import React, { useState } from 'react'
 import { Card } from './Card'
 import '../styles/signup.styles.css'
 import { Button } from './Button'
-import { FaTimes } from 'react-icons/fa'
-import { Navigate, useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 
 
 export const FormModal = () => {
 
     const data = JSON.parse(`${localStorage.getItem('userDetails')}`);
-    const [selectedValue, setSelectedValue] = useState('')
     const [fullName, setFullName] = useState(`${data.user.firstName} ${data.user.lastName}`);
     const [email, setEmail] = useState(`${data.user.email}`);
     const [amount, setAmount] = useState("1000");
     const [showModal, setShowModal] = useState(false);
-    const navigate = useNavigate();
+   
 
 
-    const handleOpenModal = () => {
-        setShowModal(true)   
-    }
+    
   const handleCloseModal = () => {
-     setShowModal(false)   
+     setShowModal(false);
+     return showModal; 
   }
 
  
