@@ -2,7 +2,7 @@ import { FaEdit } from 'react-icons/fa'
 import "../styles/profile.styles.css"
 import { useState, useRef } from "react";
 
-import man from '../assets/sign-up-image.png'
+// import man from '../assets/sign-up-image.png'
 
 interface RouteData {
   _id: String;
@@ -16,6 +16,7 @@ const Profile = () => {
   const driverDetails = JSON.parse(`${localStorage.getItem('driverDetails')}`);
   const routeDetails = JSON.parse(`${localStorage.getItem('routeDetails')}`);
   const adminDetails = JSON.parse(`${localStorage.getItem('userDetails')}`);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedValue, setSelectedValue] = useState("");
   const [selectedValueId, setSelectedValueId] = useState("");
   const [ phoneNumber, setPhoneNumber ] = useState(driverDetails.phoneNumber);
@@ -28,6 +29,7 @@ const Profile = () => {
   console.log('details: ', driverDetails);
   console.log('routeDetails: ', routeDetails);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const chooseRoute = (id:string) => {
     const route = routeDetails?.filter((route:RouteData) => route._id === id) as RouteData[];
     return `${route[0].pickUpStation} - ${route[0].destination}`;
