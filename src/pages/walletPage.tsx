@@ -202,19 +202,19 @@ export const WalletPage = () => {
                     )
                     :
                     <div className='walletpage-transaction'>
-                    <div className="walletpage-transaction-subheaders">
-                      <p>Activity</p>
-                      <p>Clear all</p>
-                    </div>
-                    <div className="walletpage-transaction-list">
-                      <div className="walletpage-transaction-list-empty">
-                      <FileIcon />
-                      <p className='walletpage-transaction-list-empty-header'>No Transaction</p>
-                      <p className='walletpage-transaction-list-empty-innerText'>You have not made any transaction yet.</p>
+                      <div className="walletpage-transaction-subheaders">
+                        <p>Activity</p>
+                        <p>Clear all</p>
+                      </div>
+                      <div className="walletpage-transaction-list">
+                          <div className="walletpage-transaction-list-empty">
+                          <FileIcon />
+                          <p className='walletpage-transaction-list-empty-header'>No Transaction</p>
+                          <p className='walletpage-transaction-list-empty-innerText'>You have not made any transaction yet.</p>
 
+                          </div>
                       </div>
                     </div>
-                  </div>
                   }
                 
             />

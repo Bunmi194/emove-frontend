@@ -10,12 +10,21 @@ import { Arrow } from '../components/Arrow'
 import {  useNavigate } from 'react-router-dom'
 // import { MoreRoutes } from '../components/MoreRoutes'
 
-
+interface RouteData {
+  _id: String;
+  pickUpStation: String;
+  destination: String;
+  price: Number;
+  createdAt: String
+}
 export const DashboardPage = () => {
   const [more, setMore] = useState<boolean>(false)
-  const [routes, setRoutes] = useState([])
+  const [routes, setRoutes] = useState<RouteData[]>([]);
   const [selectedValue, setSelectedValue] = useState("");
   const [selectedValueId, setSelectedValueId] = useState("");
+  const [ pickUp, setPickUp ] = useState("Bariga");
+  const [ destination, setDestination ] = useState("Gbagada");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,8 +60,15 @@ export const DashboardPage = () => {
   const handleChange = (e:any) => {
     setSelectedValue(e.target.value);
     setSelectedValueId(e.target);
-    console.log("cool: ",selectedValue)
-    console.log("target: ",e.target)
+    
+    if(routes){
+      const activeRoute = routes.filter(route=> route._id === e.target.value) as RouteData[];
+      console.log("pickUpStation: ", `${activeRoute[0].pickUpStation}`)
+      console.log("destination: ", `${activeRoute[0].destination}`)
+      setPickUp(()=>`${activeRoute[0].pickUpStation}`);
+      setDestination(()=>`${activeRoute[0].destination}`);
+      
+    }
   }
 
   return (
@@ -74,12 +90,12 @@ export const DashboardPage = () => {
             leftContent={
               <div className='dashboard-card'>
                 <div className='dashboard-journey-card'>
-                  <p className='dashboard-route-name'>Bariga</p>
+                  <p className='dashboard-route-name'>{pickUp}</p>
                   <span className='dashboard-route-arrow'>
                     {' '}
                     <Arrow />
                   </span>
-                  <p className='dashboard-route-name'>Gbagada</p>
+                  <p className='dashboard-route-name'>{destination}</p>
                 </div>
                  {/* <div className="dashboard-route-options">
                     <p onClick={handleMore}>See more options <FaChevronDown /></p> 

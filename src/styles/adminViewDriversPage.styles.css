@@ -27,15 +27,35 @@ thead {
   opacity: 0.8;
 }
 
+.dashboard__editDeleteWrapper{
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  background-color: aliceblue;
+  padding-top: 10px;
+  margin-top: 10px;
+}
 
+.dashboard__editDelete{
+  margin: 0 10px;
+}
+.dashboard__editDelete span {
+  margin: 10px 0px;
+}
 
+.driverImg{
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
 
 .view-drivers_table {
   width: 100%;
   background-color: #eee;
-  max-width: 100%;
+  /* max-width: 100%; */
   border-spacing: 0.15px;
   border-collapse: collapse;
+  padding-right: 10% !important;
 }
 
 

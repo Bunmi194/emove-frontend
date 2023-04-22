@@ -36,6 +36,11 @@ export const LoginPage = () => {
       setLoading(false);
       const details = JSON.stringify(result);
       localStorage.setItem('userDetails', details );
+      //check for admin
+      if(result.user.roles.includes('admin')){
+        navigate('/admin/dashboard');
+        return;
+      }
       navigate('/user/book_trip');
       console.log('sent')
     }else{

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import '../styles/paymentDashboard.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { UserNavbar } from '../components/UserNavbar'
-import { Layout } from '../Layouts/Layout'
+import { Layout } from '../Layouts/Layout';
+import { FileIcon } from "../components/FileIcon";
 // import { Button } from '../components/Button'
 // import { CardBulletPoint } from '../components/CardBulletPoint'
 
@@ -21,8 +22,11 @@ export const PaymentDashboard = () => {
     createdAt: ""
   }])
 
+  console.log("tripData: ", tripData[0].createdAt)
+
 
   const details = JSON.parse(`${localStorage.getItem('userDetails')}`);
+  console.log("TOKEN: ", details.token);
 
   const fetchTripDetails = async () => {
     const data = await fetch(`https://emove-teamc-new.onrender.com/v1/users/trips`, {
@@ -35,6 +39,7 @@ export const PaymentDashboard = () => {
     console.log("result: ", result);
     console.log("RT: ", result.data[0].route[0]);
     console.log("status: ", result.data[0].status);
+    
     setTripData(result.data);
   }
 
@@ -62,7 +67,7 @@ export const PaymentDashboard = () => {
               leftContent={
                   <div className='paymentdashboard-body'>
                       {
-                        tripData && (
+                        tripData[0].createdAt ? (
                           <table>
                             <thead>
                               <tr>
@@ -86,6 +91,24 @@ export const PaymentDashboard = () => {
                             </tbody>
                           </table>
                         )
+                        :
+
+
+                    <div className='walletpage-transaction'>
+                    <div className="walletpage-transaction-subheaders">
+                      <p>Activity</p>
+                      <p>Clear all</p>
+                    </div>
+                    <div className="walletpage-transaction-list">
+                        <div className="walletpage-transaction-list-empty">
+                        <FileIcon />
+                        <p className='walletpage-transaction-list-empty-header'>No Trip Available</p>
+                        <p className='walletpage-transaction-list-empty-innerText'>You have not made any trip yet.</p>
+
+                        </div>
+                    </div>
+                  </div>
+
                       }
                   </div>
               }

@@ -3,12 +3,19 @@
     display: flex;
     justify-content: space-around;
 }
-.logo{
 
-}
 
 .routes{
     display: flex;
+}
+
+.navBar__logout{
+    margin-left: 2rem;
+    padding: 10px;
+    background-color: #F79009;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
 }
 
 .route {
@@ -34,8 +41,22 @@
     color: #F79009;
 }
 
+.navbar__adminName{
+    border-right: 3px solid red;
+    height: 3rem;
+    padding-top: 1rem;
+    padding-right: 2rem;
+}
+
+.sign-road-icon{
+    margin-top: 1rem;
+}
+
 .dropdown{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin: 10px 0px;
     font-weight: 400;
     font-size: 16px;

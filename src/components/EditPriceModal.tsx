@@ -5,21 +5,44 @@ import { Button } from './Button'
 
 
 
-export const EditPriceModal = () => {
+export const EditPriceModal = ({showModal, setShowModal}:any) => {
    
     const [newPrice, setNewPrice] = useState('')
-    const [showModal, setShowModal] = useState(false)
 
 
     
   const handleCloseModal = () => {
      setShowModal(false);
+    
      return showModal
   }
     
-    const onHandleClick = (e:any) => {
-        e.preventDefault()
-        handleCloseModal()
+  const userDet = JSON.parse(`${localStorage.getItem('userDetails')}`);
+  // console.log("userDet: ", userDet);
+
+    const onHandleClick = async (e:any) => {
+        e.preventDefault();
+        setShowModal(false)
+        
+        const id = localStorage.getItem('tripId');
+        console.log("tripId: ", id);
+        console.log("token: ", userDet.token);
+
+        handleCloseModal();
+        //fix close modal
+        //s://emove-teamc-new.onrender.com
+        const res = await fetch(`https://emove-teamc-new.onrender.com/v1/routes/edit/${id}`, {
+          method: "POST",
+          headers: {
+            "authorization": `Bearer ${userDet.token}`,
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({price: newPrice})
+        })
+        const result = await res.json();
+        console.log("resultEDITTRIPFARE: ", result);
+        
   }  
     
   return (
@@ -42,7 +65,7 @@ export const EditPriceModal = () => {
                     />    
                   </div>
                   
-                 <Button text={'Submit'} handleClick={onHandleClick} additionalClasses={'successButton dashboardButton'} />
+                 <Button text={'Submit'} handleClick={(e)=>onHandleClick(e)} additionalClasses={'successButton dashboardButton'} />
               </form>
               </>
           }

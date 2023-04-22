@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/adminpricingpage.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Layout } from '../Layouts/Layout'
@@ -10,20 +10,44 @@ import { AdminNavbar } from '../components/AdminNavbar'
 import ReactModal from 'react-modal'
 import { EditPriceModal } from '../components/EditPriceModal'
 
+interface RouteData {
+  _id: String;
+  pickUpStation: String;
+  destination: String;
+  price: Number;
+  createdAt: String
+}
 
 export const AdminPricingPage = () => {
-  // const { modals, setModals }:any = useContext(ModalContext)
-  // const { editPriceModal } = modals
-  
-  // const handleShow = () => {
-  //   setModals({...modals, editPriceModal: true})
-  // }
+
+  const [ routes, setRoutes ] = useState<RouteData[]>();
+
+  // const userDet = JSON.parse(`${localStorage.getItem('userDetails')}`);
+  // console.log("userDet: ", userDet);
+
+  useEffect(() => {
+    const getRoutes = async () => {
+      const response = await fetch(`https://emove-teamc-new.onrender.com/v1/routes/getAllRoutes`, {
+        method: "GET",
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }        
+      })
+      const responseJSON = await response.json();
+      const data = responseJSON.routes
+      setRoutes(data)
+      console.log("routes: ", responseJSON.routes)
+    }
+    getRoutes()
+  }, [])
+
 
   const [showModal, setShowModal] = useState(false)
 
-  const handleOpenModal = () => {
-        setShowModal(true)   
-    }
+  const handleOpenModal = (id:string) => {
+    localStorage.setItem("tripId", id);
+    setShowModal(true)   
+  }
   const handleCloseModal = () => {
      setShowModal(false)   
   }
@@ -63,31 +87,38 @@ export const AdminPricingPage = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className='tr'>
-                        <td>
-                          <p>Oshodi - Ikeja</p>
-                        </td>
-                        <td>
-                          <div className='flex'>
-                            <p>NGN 300</p>
-                            <span>Standard price</span>
-                          </div>
-                        </td>
-                        <td>
-                          <button onClick={handleOpenModal} className='edit'>
-                            Edit
-                          </button>
-                              <ReactModal
-                      isOpen={showModal}
-                      shouldCloseOnOverlayClick={true}
-                      contentLabel={"Fund wallet"}>
-                      <button onClick={handleCloseModal}
-                        className='walletpage-closeModal'>
-                        X</button>
-                       <EditPriceModal/>
-                      </ReactModal>
-                        </td>
-                      </tr>
+                      { routes? routes[0]._id && routes?.map(route => (
+                       <tr className='tr'>
+                      <td>
+                        <p>{route.pickUpStation} - {route.destination}</p>
+                      </td>
+                      <td>
+                        <div className='flex'>
+                          <p>{`NGN ${route.price}`}</p>
+                          <span>Standard price</span>
+                        </div>
+                      </td>
+                      <td>
+                        <button onClick={()=> handleOpenModal(`${route._id}`)} className='edit'>
+                          Edit
+                        </button>
+                            <ReactModal
+                    isOpen={showModal}
+                    shouldCloseOnOverlayClick={true}
+                    contentLabel={"Fund wallet"}>
+                    <button onClick={handleCloseModal}
+                      className='walletpage-closeModal'>
+                      X</button>
+                     <EditPriceModal showModal={showModal} setShowModal={setShowModal}/>
+                    </ReactModal>
+                      </td>
+                    </tr>
+                      ))
+                      :
+                      <div>
+                        No Pricing details available.
+                      </div>
+                    }
                     </tbody>
                   </table>
                 </section>

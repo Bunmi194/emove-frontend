@@ -11,7 +11,7 @@ export const FormModal = () => {
     const data = JSON.parse(`${localStorage.getItem('userDetails')}`);
     const [fullName, setFullName] = useState(`${data.user.firstName} ${data.user.lastName}`);
     const [email, setEmail] = useState(`${data.user.email}`);
-    const [amount, setAmount] = useState("1000");
+    const [amount, setAmount] = useState("");
     const [showModal, setShowModal] = useState(false);
    
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/adminDashboard.styles.css'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Layout } from '../Layouts/Layout'
@@ -12,25 +12,49 @@ import { FaCarSide } from 'react-icons/fa'
 import BarChart from '../components/Barchart'
 
 export const AdminDashboardPage = () => {
-// const { drivers, passengers, rides, loading, error } = useFetch();
 
-  // if (loading) {
-  //   return (
-  //     <main>
-  //       <div className='loader'>
-  //         <BeatLoader color="#F79009" />
-  //       </div>
-  //   </main>);
-  // }
-  // if (error) {
-  //  return (
-  //     <main>
-  //      <div className='loader'>
-  //        <h1>Internal Server Error</h1>
-  //       </div>
-  //   </main>);
-  // }
+  const [ passengers, setPassengers ] = useState(0);
+  const [ drivers, setDrivers ] = useState(0);
 
+  const userDetails = JSON.parse(`${localStorage.getItem("userDetails")}`);
+  // console.log("userDetails: ", userDetails)
+
+  const fetchDriversCount = async () => {
+    const driversCount = await fetch("http://localhost:3030/v1/users/drivers/count", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${userDetails.token}`
+      }
+    });
+
+    const result = await driversCount.json();
+    setDrivers(result.countOfDrivers);
+  }
+
+  const fetchPassengersCount = async () => {
+    const passengersCount = await fetch("http://localhost:3030/v1/users/passengers/count", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${userDetails.token}`
+      }
+    });
+
+    const result = await passengersCount.json();
+    setPassengers(result.userCount);
+    console.log("passengers: ", passengers)
+    console.log("result: ", result)
+  }
+
+  useEffect(()=>{
+    fetchDriversCount();
+    fetchPassengersCount();
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const data: Array<[string, number]> = [
     ['Jan', 15000],
@@ -81,7 +105,7 @@ export const AdminDashboardPage = () => {
                     )} */}
                       {
                       <div className='admin-dashboard_left'>
-                        <h3>19</h3>
+                        <h3>12</h3>
                         <small>rides</small>
                       </div>
                     }
@@ -98,7 +122,7 @@ export const AdminDashboardPage = () => {
                     )} */}
                       {
                       <div className='admin-dashboard_left'>
-                        <h3>19</h3>
+                        <h3>{passengers}</h3>
                         <small>passengers</small>
                       </div>
                     }
@@ -115,7 +139,7 @@ export const AdminDashboardPage = () => {
                     )} */}
                     {
                       <div className='admin-dashboard_left'>
-                        <h3>19</h3>
+                        <h3>{drivers}</h3>
                         <small>drivers</small>
                       </div>
                     }

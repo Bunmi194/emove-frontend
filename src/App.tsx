@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import ForgotPassword from "./pages/forgotPassword";
@@ -67,13 +66,14 @@ function App() {
       
 
       {/*Admin Dashboard  */}
-      <Route path="/admin/pricing" element={details? 
+      {/* Protect admin */}
+      <Route path="/admin/pricing" element={true? 
                 <AdminPricingPage /> : <LoginPage />}></Route>
-      <Route path="/admin/drivers" element={details? 
+      <Route path="/admin/drivers" element={true? 
                 <AdminDriversPage /> : <LoginPage />}></Route>
-      <Route path="/admin/driver" element={details? 
+      <Route path="/admin/driver" element={true? 
                 <AdminViewDriversPage /> : <LoginPage />}></Route>
-      <Route path="/admin/dashboard" element={details? 
+      <Route path="/admin/dashboard" element={true? 
                 <AdminDashboardPage /> : <LoginPage />}></Route>
 
 

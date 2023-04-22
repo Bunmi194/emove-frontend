@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Layout } from '../Layouts/Layout'
 import { Sidebar } from '../components/Sidebar'
@@ -6,13 +6,38 @@ import { AdminNavbar } from '../components/AdminNavbar'
 // import { ModalContext } from '../context/admindashContext'
 import { Actions } from "../components/Actions";
 import "../styles/adminViewDriversPage.styles.css";
-import man2 from "../assets/sign-up-image.png"
+// import man2 from "../assets/sign-up-image.png"
 import Profile from "../components/Profile";
 // import { EditAndDeleteDriverModal } from "../components/EditAndDeleteDriverModal";
-import ReactModal from 'react-modal'
+import ReactModal from 'react-modal';
 
+
+interface DriverData {
+  _id: String;
+  fullName: String;
+  routeOfOperation: String;
+  phoneNumber: String;
+  accountNumber: String
+  validId: String
+  photo: String
+}
+
+interface RouteData {
+  _id: String;
+  pickUpStation: String;
+  destination: String;
+  price: Number;
+  createdAt: String
+}
 
 export const AdminViewDriversPage = () => {
+
+  const [ drivers, setDrivers ] = useState<DriverData[]>();
+  const [ routes, setRoutes ] = useState<RouteData[]>();
+  const userDetails = JSON.parse(`${localStorage.getItem("userDetails")}`);
+  const token = userDetails.token;
+  // const popDivRef = useRef<HTMLDivElement[]>(null);
+
   // const { modals, setModals }:any = useContext(ModalContext)
   // const { editAndDeleteModal, profileModal } = modals
 
@@ -29,6 +54,51 @@ export const AdminViewDriversPage = () => {
      setShowModal(false)   
   
   }
+
+    const getRoutes = async () => {
+      const response = await fetch(`https://emove-teamc-new.onrender.com/v1/routes/getAllRoutes`, {
+        method: "GET",
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }        
+      })
+      const responseJSON = await response.json();
+      const data = responseJSON.routes
+      setRoutes(data)
+      console.log("routes: ", responseJSON.routes)
+    }
+
+    const chooseRoute = (id:string) => {
+      const route = routes?.filter(route => route._id === id) as RouteData[];
+      return `${route[0].pickUpStation} - ${route[0].destination}`;
+    }
+    
+    const handleClick = (id:number) => {
+      alert(id);
+
+    }
+
+
+  useEffect(() => {
+    console.log("token: ", token)
+    const getDrivers = async () => {
+      const response = await fetch(`http://localhost:3030/v1/users/drivers`, {
+        method: "GET",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Authorization": `Bearer ${token}`
+        }        
+      })
+      const responseJSON = await response.json();
+      setDrivers(responseJSON.drivers)
+      console.log("routesHERE: ", responseJSON.drivers)
+    }
+    getDrivers();
+    getRoutes();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       {/* {profileModal && <Profile />} */}
@@ -67,33 +137,49 @@ export const AdminViewDriversPage = () => {
               <th>Account Number</th>
               <th>Valid ID</th>
               <th>Photo</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody className="view-drivers_tbody">
-            <tr  className="view-drivers_tr">
-              <td>Ifeoluba Obi</td>
-              <td>Oshodi - Mile2</td>
-              <td>0817747837373</td>
-              <td>00074552728782</td>
-              <td>NIN Slip</td>
-              {/* <td onClick={handleShow} className="view-drivers_flex"> */}
-              <td  className="view-drivers_flex">
-                          <img onClick={handleOpenModal} src={man2} alt="..." />
-                          <ReactModal
-                      isOpen={showModal}
-                      shouldCloseOnOverlayClick={true}
-                      contentLabel={"Fund wallet"}>
-                      <button onClick={handleCloseModal}
-                        className='walletpage-closeModal'>
-                        X</button>
-                       <Profile/>
-                      </ReactModal>
-              </td>
-              <td className="view-drivers_driver">
-                <Actions />
-              </td>
-            </tr>
+            { drivers ? drivers.map((driver: DriverData, index:number) => (
+              
+                <tr  className="view-drivers_tr">
+                <td>{driver.fullName}</td>
+                <td>{chooseRoute(`${driver.routeOfOperation}`)}</td>
+                <td>{driver.phoneNumber}</td>
+                <td>{driver.accountNumber}</td>
+                <td>NIN Slip</td>
+                {/* <td onClick={handleShow} className="view-drivers_flex"> */}
+                <td  className="view-drivers_flex">
+                            <img onClick={handleOpenModal} src={`${driver.photo}`} alt="driver" className="driverImg" />
+                            <ReactModal
+                        isOpen={showModal}
+                        shouldCloseOnOverlayClick={true}
+                        contentLabel={"Fund wallet"}>
+                        <button onClick={handleCloseModal}
+                          className='walletpage-closeModal'>
+                          X</button>
+                         <Profile/>
+                        </ReactModal>
+                </td>
+                <td className="view-drivers_driver">
+                  <Actions handleClick={()=>handleClick(index)}/>
+                  <div className='dashboard__editDeleteWrapper'  >
+                    <div className='dashboard__editDelete'>
+                      <span style={{marginBottom: "5px"}}>Edit</span>
+                    </div>
+                    <div className='dashboard__editDelete'>
+                      <span>Delete</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              
+            ))
+          :
+          (
+            <div>No Driver Found</div>
+          )}
           </tbody>
         </table>
       </section>

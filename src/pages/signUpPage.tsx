@@ -51,7 +51,7 @@ export const SignUpPage = () => {
       setLoading(false);
       console.log('error: ', result.errors[0])
       setError(`Error: ${result.errors[0].msg}`);
-
+      return;
     }
   }
   return (
