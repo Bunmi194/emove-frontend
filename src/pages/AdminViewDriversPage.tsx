@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { DashboardLayout } from '../Layouts/DashboardLayout'
 import { Layout } from '../Layouts/Layout'
 import { Sidebar } from '../components/Sidebar'
@@ -8,6 +8,7 @@ import { Actions } from "../components/Actions";
 import "../styles/adminViewDriversPage.styles.css";
 // import man2 from "../assets/sign-up-image.png"
 import Profile from "../components/Profile";
+import Prompt from "../components/Prompt";
 // import { EditAndDeleteDriverModal } from "../components/EditAndDeleteDriverModal";
 import ReactModal from 'react-modal';
 
@@ -34,16 +35,13 @@ export const AdminViewDriversPage = () => {
 
   const [ drivers, setDrivers ] = useState<DriverData[]>();
   const [ routes, setRoutes ] = useState<RouteData[]>();
+  const [ deleteModal, setDeleteModal ] = useState(false);
+  const [ deleteIndex, setDeleteIndex ] = useState(0);
+
   const userDetails = JSON.parse(`${localStorage.getItem("userDetails")}`);
+  localStorage.setItem("routeDetails", JSON.stringify(routes));
   const token = userDetails.token;
-  // const popDivRef = useRef<HTMLDivElement[]>(null);
-
-  // const { modals, setModals }:any = useContext(ModalContext)
-  // const { editAndDeleteModal, profileModal } = modals
-
-  
-  //   const handleShow = () => {
-  //   setModals({...modals, profileModal: true})
+  const divRefs = useRef<HTMLDivElement[]>([]);
 
     const [showModal, setShowModal] = useState(false)
 
@@ -53,6 +51,21 @@ export const AdminViewDriversPage = () => {
   const handleCloseModal = () => {
      setShowModal(false)   
   
+  }
+
+  const editDriver = (id:number) => {
+    alert(`Edit driver ${id}`);
+    handleOpenModal();
+    divRefs.current.forEach(div => div.classList.add('hide'));
+    drivers? localStorage.setItem('driverDetails', JSON.stringify(drivers[id])) : localStorage.setItem('driverDetails', "");
+
+  }
+
+  const deleteDriver = (id:number) => {
+    // alert(`Delete driver ${id}`)
+    setDeleteModal(true);
+    divRefs.current.forEach(div => div.classList.add('hide'));
+    setDeleteIndex(id);
   }
 
     const getRoutes = async () => {
@@ -74,8 +87,47 @@ export const AdminViewDriversPage = () => {
     }
     
     const handleClick = (id:number) => {
-      alert(id);
+      // alert(id);
+      // console.log(divRefs.current);
+      console.log(divRefs.current[id]);
+      console.log("drivers: ", drivers? drivers[id] : "");
 
+      if(divRefs.current[id].classList.contains('hide')){
+        divRefs.current.forEach(div => div.classList.add('hide'));
+        divRefs.current[id].classList.remove('hide');
+      }else{
+        divRefs.current.forEach(div => div.classList.add('hide'));
+        // divRefs.current[id].classList.remove('hide');
+        
+      }
+
+    }
+
+    const deleteDriverCall = async () => {
+      setDeleteModal(false);
+      alert(`Delete index ${deleteIndex}`);
+      const token = userDetails.token;
+      if(drivers){
+        const routeId = drivers[deleteIndex]._id;
+        const res = await fetch(`http://localhost:3030/v1/users/delete-driver/${routeId}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          }
+        })
+        console.log("drivers: ", drivers);
+        console.log("user: ", userDetails);
+        const result = await res.json();
+        console.log("result: ", result);
+        if(result.message === "Successful"){
+          alert("Driver successfully deleted");
+        }else{
+          alert(`Error: ${result.message}`);
+        }
+      }
+      return;
     }
 
 
@@ -99,9 +151,19 @@ export const AdminViewDriversPage = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const customStyles = {
+    content: {
+      width: '50%',
+      height: '30%',
+      margin: 'auto'
+    }
+  };
+  
+
   return (
     <>
       {/* {profileModal && <Profile />} */}
+
       <DashboardLayout
         navbar={<AdminNavbar />}
         navbarHeight='15%'
@@ -128,6 +190,7 @@ export const AdminViewDriversPage = () => {
        
       </div>
       <section>
+
         <table className="view-drivers_table">
           <thead>
             <tr>
@@ -164,12 +227,12 @@ export const AdminViewDriversPage = () => {
                 </td>
                 <td className="view-drivers_driver">
                   <Actions handleClick={()=>handleClick(index)}/>
-                  <div className='dashboard__editDeleteWrapper'  >
+                  <div className='dashboard__editDeleteWrapper hide' ref={(el:HTMLDivElement) => divRefs.current[index] = el} id={`${index}`}>
                     <div className='dashboard__editDelete'>
-                      <span style={{marginBottom: "5px"}}>Edit</span>
+                      <span onClick={()=>editDriver(index)}>Edit</span>
                     </div>
                     <div className='dashboard__editDelete'>
-                      <span>Delete</span>
+                      <span onClick={()=>deleteDriver(index)}>Delete</span>
                     </div>
                   </div>
                 </td>
@@ -180,6 +243,17 @@ export const AdminViewDriversPage = () => {
           (
             <div>No Driver Found</div>
           )}
+              <ReactModal
+                        isOpen={deleteModal}
+                        shouldCloseOnOverlayClick={true}
+                        contentLabel={"Fund wallet"}
+                        style={customStyles}>
+                        
+                        <button onClick={()=>setDeleteModal(false)}
+                          className='walletpage-closeModal'>
+                          X</button>
+                <Prompt header="Are you sure you want to delete?" handleClickNo={()=>setDeleteModal(false)} handleClickYes={deleteDriverCall}/>
+              </ReactModal>
           </tbody>
         </table>
       </section>
@@ -187,8 +261,8 @@ export const AdminViewDriversPage = () => {
                
             }
             customRightContentClasses='tripdetails-right-content'
-         
-          />
+            
+            />
         }
         header={ <h1>All Drivers</h1>}
       />

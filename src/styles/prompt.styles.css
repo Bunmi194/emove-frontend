@@ -1,0 +1,48 @@
+/* 
+.profile-card_container{
+    width: 100%;
+    height: 100%;
+    position: absolute;   
+    display: inline-block;  
+    width: 100%;  
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red; 
+    z-index: 2; 
+    cursor: pointer;
+}
+ */
+
+ .profile-card_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+  }
+  
+.new__btnCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.new__btnCard button{
+    margin: 5rem 4rem 0 !important;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #F79009;
+    color: #fff;
+    font-weight: bold;
+}
+
+.new__wrapper h3{
+    text-align: center;
+    font-size: 32px;
+}

@@ -14,7 +14,19 @@
     z-index: 2000;
 }    
 
+.updateBtn{
+    margin-top: 2rem;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: #F79009;
+    color: #fff;
+    font-weight: bold;
+}
 
+.input__edit{
+    border: none;
+}
 
 .profile-card_flex{
     width: 100%;

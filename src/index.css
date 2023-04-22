@@ -188,6 +188,11 @@ hr{
   margin: auto;
   text-align: center;
 }
+
+
+
+
+
 @media screen and (min-width: 100px) and (max-width: 568px) {
   .landingPageImage{
     display: none !important;
