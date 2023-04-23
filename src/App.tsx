@@ -39,14 +39,16 @@ function App() {
       <Route path="/" element={<LandingPage />} ></Route>
       <Route path="/users/verify/:token" element={<VerifySignUp />} ></Route>
 
-      <Route path="/forgotPassword" element={details? 
-                <ForgotPassword /> : <LoginPage />}></Route>
+      <Route path="/forgotpassword" element={
+                <ForgotPassword /> }></Route>
+
       <Route path="/resetPassword/:token" element={details? 
                 <ResetPassword /> : <LoginPage />} ></Route>
-      <Route path="/checkemail/:email" element={details? 
-                <CheckEmail /> : <LoginPage />}></Route>
-      <Route path="/success" element={details? 
-                <SuccessPage /> : <LoginPage />}></Route>
+      <Route path="/checkemail/:email" element={
+                <CheckEmail /> }></Route>
+
+      <Route path="/success" element={
+                <SuccessPage /> }></Route>
 
       {/* User Dashboard */}
       <Route path="/user/book_trip" element={details? 

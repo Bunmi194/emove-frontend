@@ -1,13 +1,27 @@
 import React, { useState } from 'react'
-import { Card } from './Card'
+import { EditPriceCard } from './EditPriceCard'
 import '../styles/signup.styles.css'
 import { Button } from './Button'
+import ReactModal from 'react-modal';
+import PromptInfo from "../components/PromptInfo";
+import { useNavigate } from 'react-router-dom';
 
+
+const customStyles = {
+  content: {
+    width: '50%',
+    height: '30%',
+    margin: 'auto'
+  }
+};
 
 
 export const EditPriceModal = ({showModal, setShowModal}:any) => {
    
     const [newPrice, setNewPrice] = useState('')
+    const [ priceLoading, setPriceLoading] = useState(false);
+    const [ updated, setUpdated ] = useState(false);
+    const navigate = useNavigate();
 
 
     
@@ -23,6 +37,7 @@ export const EditPriceModal = ({showModal, setShowModal}:any) => {
     const onHandleClick = async (e:any) => {
         e.preventDefault();
         setShowModal(false)
+        setPriceLoading(true)
         
         const id = localStorage.getItem('tripId');
         console.log("tripId: ", id);
@@ -42,11 +57,27 @@ export const EditPriceModal = ({showModal, setShowModal}:any) => {
         })
         const result = await res.json();
         console.log("resultEDITTRIPFARE: ", result);
+        if(result.message === "Route updated successfully"){
+          setPriceLoading(false);
+          alert("Route updated successfully")
+          // window.location.reload();
+          //modal
+          setUpdated(true);
+          return;
+        }
+        setPriceLoading(false);
+        return;
         
   }  
+
+  const closeAndReload = () => {
+    setUpdated(false);
+    navigate("/admin/driver");
+    return;
+  }
     
   return (
-      <Card
+      <EditPriceCard
           headerText='Edit Price'
         //    button={<Button text={'Submit'} additionalClasses={'successButton'} />}
           additionalNode={
@@ -64,8 +95,19 @@ export const EditPriceModal = ({showModal, setShowModal}:any) => {
                         value={newPrice}
                     />    
                   </div>
+                  <ReactModal
+                    isOpen={updated}
+                    shouldCloseOnOverlayClick={true}
+                    contentLabel={"Fund wallet"}
+                    style={customStyles}>
+                    
+                    <button onClick={closeAndReload}
+                      className='walletpage-closeModal'>
+                      X</button>
+                    <PromptInfo header="Price updated successfully." handleClickClose={closeAndReload}/>
+                  </ReactModal>
                   
-                 <Button text={'Submit'} handleClick={(e)=>onHandleClick(e)} additionalClasses={'successButton dashboardButton'} />
+                 <Button text={priceLoading? "Updating": "Update"} handleClick={(e)=>onHandleClick(e)} additionalClasses={'successButton dashboardButton'} />
               </form>
               </>
           }

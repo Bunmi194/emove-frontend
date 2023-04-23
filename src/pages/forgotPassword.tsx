@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Card } from '../components/Card'
+import { ForgotPasswordCard } from '../components/ForgotPasswordCard'
 import { Layout } from '../Layouts/Layout'
 import "../styles/forgotPassword.styles.css"
 
@@ -43,7 +43,7 @@ const ForgotPassword: React.FC = () => {
         leftContentWidth='100%'
         leftContent={
           <div className='cover-div'>
-            <Card
+            <ForgotPasswordCard
           headerText='Forgot Password'
           additionalNode={ 
             // <form className='signup'>

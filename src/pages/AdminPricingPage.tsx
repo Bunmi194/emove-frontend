@@ -38,7 +38,8 @@ export const AdminPricingPage = () => {
       setRoutes(data)
       console.log("routes: ", responseJSON.routes)
     }
-    getRoutes()
+    getRoutes();
+    // window.location.reload();
   }, [])
 
 
@@ -51,6 +52,16 @@ export const AdminPricingPage = () => {
   const handleCloseModal = () => {
      setShowModal(false)   
   }
+
+  const customStyles = {
+    content: {
+      width: '50%',
+      height: '30%',
+      margin: 'auto'
+    }
+  };
+
+
   return (
     <>
       <DashboardLayout
@@ -105,7 +116,8 @@ export const AdminPricingPage = () => {
                             <ReactModal
                     isOpen={showModal}
                     shouldCloseOnOverlayClick={true}
-                    contentLabel={"Fund wallet"}>
+                    contentLabel={"Fund wallet"}
+                    style={customStyles}>
                     <button onClick={handleCloseModal}
                       className='walletpage-closeModal'>
                       X</button>

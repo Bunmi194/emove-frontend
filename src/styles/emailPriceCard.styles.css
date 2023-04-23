@@ -1,26 +1,23 @@
-  .card {
+/* .editPrice__card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 3px;
-    gap: 5px;
-    /* border: 1px solid red; */
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    left: 0px;
-    top: 16px;
+    gap: 5px; 
+    width: 40%;
+    height: 60%;
+    margin-top: 20% !important;
     margin-left: 0px !important;
     padding-left: 0px !important;
-
-    /* White */
+    margin: auto !important;
 
     background: #ffffff;
-    border-radius: 24px;
-        margin-top: -76px;
-  }
-
+    border-radius: 24px; 
+    padding-top: 40% !important; 
+    margin-top: 40% !important; 
+  } 
+*/
     .header_text {
     color: #012a4a;
     text-align: center;

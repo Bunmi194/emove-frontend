@@ -11,6 +11,8 @@ import Profile from "../components/Profile";
 import Prompt from "../components/Prompt";
 // import { EditAndDeleteDriverModal } from "../components/EditAndDeleteDriverModal";
 import ReactModal from 'react-modal';
+import PromptInfo from "../components/PromptInfo";
+import { useNavigate } from "react-router-dom";
 
 
 interface DriverData {
@@ -23,44 +25,64 @@ interface DriverData {
   photo: String
 }
 
-interface RouteData {
-  _id: String;
-  pickUpStation: String;
-  destination: String;
-  price: Number;
-  createdAt: String
+const dummyDriver = {
+  _id: "String",
+  fullName: "String",
+  routeOfOperation: "String",
+  phoneNumber: "String",
+  accountNumber: "String",
+  validId: "String",
+  photo: "String"
 }
+interface RouteData {
+  _id?: String;
+  pickUpStation?: String;
+  destination?: String;
+  price?: Number;
+  createdAt?: String
+}
+const dummyRoute = [{
+  _id: "o",
+  pickUpStation: "-",
+  destination: "-",
+  price: 0,
+  createdAt: "0"
+}]
 
 export const AdminViewDriversPage = () => {
 
   const [ drivers, setDrivers ] = useState<DriverData[]>();
   const [ routes, setRoutes ] = useState<RouteData[]>();
+  const [ deleted, setDeleted ] = useState(false);
   const [ deleteModal, setDeleteModal ] = useState(false);
   const [ deleteIndex, setDeleteIndex ] = useState(0);
+  const navigate = useNavigate();
 
   const userDetails = JSON.parse(`${localStorage.getItem("userDetails")}`);
-  localStorage.setItem("routeDetails", JSON.stringify(routes));
+  const driverDetails = JSON.parse(`${localStorage.getItem("driverDetails")}`);
+  console.log("userDetailsGG: ", userDetails)
+  console.log("driverDetails: ", driverDetails)
   const token = userDetails.token;
   const divRefs = useRef<HTMLDivElement[]>([]);
-
-    const [showModal, setShowModal] = useState(false)
-
-  const handleOpenModal = () => {
-        setShowModal(true)   
-    }
-  const handleCloseModal = () => {
-     setShowModal(false)   
   
+  const [showModal, setShowModal] = useState(false)
+  
+  const handleOpenModal = () => {
+    setShowModal(true)   
   }
-
+  const handleCloseModal = () => {
+    setShowModal(false)   
+    
+  }
+  
   const editDriver = (id:number) => {
-    alert(`Edit driver ${id}`);
+    // alert(`Edit driver ${id}`);
     handleOpenModal();
     divRefs.current.forEach(div => div.classList.add('hide'));
-    drivers? localStorage.setItem('driverDetails', JSON.stringify(drivers[id])) : localStorage.setItem('driverDetails', "");
-
+    drivers? localStorage.setItem('driverDetails', JSON.stringify(drivers[id])) : localStorage.setItem('driverDetails', JSON.stringify(dummyDriver));
+    
   }
-
+  
   const deleteDriver = (id:number) => {
     // alert(`Delete driver ${id}`)
     setDeleteModal(true);
@@ -78,12 +100,23 @@ export const AdminViewDriversPage = () => {
       const responseJSON = await response.json();
       const data = responseJSON.routes
       setRoutes(data)
-      console.log("routes: ", responseJSON.routes)
-    }
+      localStorage.setItem("routeDetails", JSON.stringify(routes));
+      console.log("routesIN: ", responseJSON.routes);
 
+    }
+    
     const chooseRoute = (id:string) => {
-      const route = routes?.filter(route => route._id === id) as RouteData[];
-      return `${route[0].pickUpStation} - ${route[0].destination}`;
+      if(routes && routes.length > 0) {
+        const route = routes?.filter(route => route._id === id) as RouteData[];
+        console.log("routeinFunction: ", route)
+        if(route.length === 0){
+          return `${dummyRoute[0].pickUpStation} - ${dummyRoute[0].destination}`;
+
+        }
+
+        return `${route[0].pickUpStation} - ${route[0].destination}`;
+      }
+      return `${dummyRoute[0].pickUpStation} - ${dummyRoute[0].destination}`;
     }
     
     const handleClick = (id:number) => {
@@ -91,6 +124,7 @@ export const AdminViewDriversPage = () => {
       // console.log(divRefs.current);
       console.log(divRefs.current[id]);
       console.log("drivers: ", drivers? drivers[id] : "");
+      localStorage.setItem("driverDetails", JSON.stringify(drivers? drivers[id] : {}));
 
       if(divRefs.current[id].classList.contains('hide')){
         divRefs.current.forEach(div => div.classList.add('hide'));
@@ -105,7 +139,7 @@ export const AdminViewDriversPage = () => {
 
     const deleteDriverCall = async () => {
       setDeleteModal(false);
-      alert(`Delete index ${deleteIndex}`);
+      // alert(`Delete index ${deleteIndex}`);
       const token = userDetails.token;
       if(drivers){
         const routeId = drivers[deleteIndex]._id;
@@ -122,11 +156,12 @@ export const AdminViewDriversPage = () => {
         const result = await res.json();
         console.log("result: ", result);
         if(result.message === "Successful"){
-          alert("Driver successfully deleted");
+          setDeleted(true);
         }else{
           alert(`Error: ${result.message}`);
         }
       }
+      // window.location.reload();
       return;
     }
 
@@ -143,10 +178,12 @@ export const AdminViewDriversPage = () => {
       })
       const responseJSON = await response.json();
       setDrivers(responseJSON.drivers)
-      console.log("routesHERE: ", responseJSON.drivers)
+      console.log("setDrivers: ", responseJSON.drivers)
     }
     getDrivers();
     getRoutes();
+    // window.location.reload();
+    console.log("routesOUT: ", routes)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -158,6 +195,19 @@ export const AdminViewDriversPage = () => {
       margin: 'auto'
     }
   };
+  const customStylesTwo = {
+    content: {
+      width: '40%',
+      height: '60%',
+      margin: 'auto'
+    }
+  };
+
+  const closeAndReload = () => {
+    setDeleted(false);
+    navigate("/admin/driver");
+    return;
+  }
   
 
   return (
@@ -218,12 +268,25 @@ export const AdminViewDriversPage = () => {
                             <ReactModal
                         isOpen={showModal}
                         shouldCloseOnOverlayClick={true}
-                        contentLabel={"Fund wallet"}>
+                        contentLabel={"Fund wallet"}
+                        style={customStylesTwo}>
                         <button onClick={handleCloseModal}
                           className='walletpage-closeModal'>
                           X</button>
                          <Profile/>
                         </ReactModal>
+
+                        <ReactModal
+                          isOpen={deleted}
+                          shouldCloseOnOverlayClick={true}
+                          contentLabel={"Fund wallet"}
+                          style={customStyles}>
+                          
+                          <button onClick={closeAndReload}
+                            className='walletpage-closeModal'>
+                            X</button>
+                          <PromptInfo header="Driver added successfully." handleClickClose={closeAndReload}/>
+                      </ReactModal>
                 </td>
                 <td className="view-drivers_driver">
                   <Actions handleClick={()=>handleClick(index)}/>

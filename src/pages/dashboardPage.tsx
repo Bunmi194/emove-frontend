@@ -39,6 +39,7 @@ export const DashboardPage = () => {
       const data = responseJSON.routes
       setRoutes(data)
       console.log(responseJSON.routes)
+      // window.location.reload();
     }
     getRoutes()
   }, [])

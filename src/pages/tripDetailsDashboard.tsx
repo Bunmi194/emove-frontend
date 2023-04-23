@@ -7,6 +7,8 @@ import { Button } from '../components/Button'
 import { Sidebar } from '../components/Sidebar';
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
+import ReactModal from 'react-modal';
+import PromptInfo from "../components/PromptInfo";
 // import { response } from 'express'
 
 interface tripDetailsType {
@@ -19,6 +21,9 @@ export const TripDetailsDashboard = () => {
   const location = useLocation();
   const [ tripDetails, setTripDetails ] = useState<tripDetailsType>({});
   const [ loading, setLoading ] = useState(false);
+
+  const [ bookedModal, setBookedModal ] = useState(false);
+
 
   const today = new Date();
   console.log("value:",location.state);
@@ -83,13 +88,15 @@ const handleClick = async (e:any) => {
       console.log("USER: ", user);
       localStorage.setItem("userDetails", JSON.stringify(user));
     }
-    alert("Trip booked successfully");
-    navigate("/user/book_trip");
+    // alert("Trip booked successfully");
+    setBookedModal(true);
+    // window.location.reload();
     return;
   }
   setLoading(false);
   alert("Failed to book trip");
   navigate("/user/book_trip");
+  // window.location.reload();
   return;
 }
 
@@ -108,13 +115,26 @@ const handleClick = async (e:any) => {
     };
     const id = location.state;
     getRoute(id);
+    // window.location.reload();
   }
   
-  
+  const closeAndReload = () => {
+    setBookedModal(false);
+    navigate("/user/book_trip");
+    return;
+  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(getRouteData, []);
   // console.log("tripDetails: ",tripDetails)
+
+  const customStyles = {
+    content: {
+      width: '50%',
+      height: '30%',
+      margin: 'auto'
+    }
+  };
 
   return (
     <>
@@ -137,6 +157,7 @@ const handleClick = async (e:any) => {
             rightContentWidth='35%'
             additionalClasses='dashboard-journey-layout'
             leftContent={
+              
               <div className='tripdetails-card'>
                 <div className='tripdetails-card-subheader-container'>
                   <h3 className='tripdetails-card-subheader'>Trip Details</h3>
@@ -156,6 +177,19 @@ const handleClick = async (e:any) => {
                     <p className='tripdetails-card-description-content'>{formattedDate} - {formattedTime}</p>
                   </div>
                 </div>
+
+              <ReactModal
+                        isOpen={bookedModal}
+                        shouldCloseOnOverlayClick={true}
+                        contentLabel={"Fund wallet"}
+                        style={customStyles}>
+                        
+                        <button onClick={closeAndReload}
+                          className='walletpage-closeModal'>
+                          X</button>
+                <PromptInfo header="Your trip has been booked." handleClickClose={closeAndReload}/>
+              </ReactModal>
+
                 <div className='tripdetails-button'>
                   {<Button text={`${loading? "Booking" : "Book a Trip"}`} additionalClasses={'successButton dashboardButton'} handleClick={handleClick}/>}
                 </div>

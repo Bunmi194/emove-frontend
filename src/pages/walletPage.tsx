@@ -93,6 +93,7 @@ export const WalletPage = () => {
       console.log("BOOOP.user: ", JSON.stringify(newDetails))
       console.log("new.ego: ", newDetails.user.wallet_balance)
     }
+    // window.location.reload();
   }
 
   
@@ -128,6 +129,13 @@ export const WalletPage = () => {
     return false;
   }
 
+  const customStyles = {
+    content: {
+      width: '30%',
+      height: '60%',
+      margin: 'auto'
+    }
+  };
   //make verify call
   
 
@@ -160,7 +168,8 @@ export const WalletPage = () => {
                     <ReactModal
                       isOpen={showModal}
                       shouldCloseOnOverlayClick={true}
-                      contentLabel={"Fund wallet"}>
+                      contentLabel={"Fund wallet"}
+                      style={customStyles}>
                       <button onClick={handleCloseModal}
                         className='walletpage-closeModal'>
                         X</button>
@@ -176,7 +185,7 @@ export const WalletPage = () => {
                 rightContent={
 
                     transactions[0]._id ? (
-                      <div style={{paddingTop: "1500px", width: "100%", zIndex: "0"}}><table>
+                      <div style={{paddingTop: "150px", width: "80%", zIndex: "0"}}><table>
                         <thead>
                           <tr>
                             <th>Transaction Type</th>

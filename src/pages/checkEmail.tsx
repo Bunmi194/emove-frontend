@@ -1,7 +1,7 @@
 import getParam from '../utils/getParams'
 import { Button } from '../components/Button'
 import { EnvelopeIcon } from '../assets/EnvelopeIcon'
-import { Card } from '../components/Card';
+import { EmailCard } from '../components/EmailCard';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -51,8 +51,8 @@ const CheckEmail = () => {
         </div>
           </StyledForgotPassword> */}
 
-      <div style={{ backgroundColor: '#F2F4F7', height: '100vh' }}>
-        <Card
+      <div style={{ backgroundColor: '#F2F4F7', height: '80vh', padding: "80px 0" }}>
+        <EmailCard
           icon={<EnvelopeIcon />}
           headerText={'Check your email'}
           bodyText={

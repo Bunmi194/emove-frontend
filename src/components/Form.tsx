@@ -2,6 +2,9 @@
 import  "../styles/_form.styles.css";
 import { Button } from "./Button";
 import { useState, useEffect } from "react";
+import ReactModal from 'react-modal';
+import PromptInfo from "../components/PromptInfo";
+import { useNavigate } from "react-router-dom";
 
 
 interface RouteData {
@@ -11,6 +14,14 @@ interface RouteData {
   price: Number;
   createdAt: String
 }
+
+const customStyles = {
+  content: {
+    width: '50%',
+    height: '30%',
+    margin: 'auto'
+  }
+};
 
 const Form = () => {
   // const idRef = useRef<HTMLInputElement>(null);
@@ -23,9 +34,17 @@ const Form = () => {
   const [ loading, setLoading ] = useState(false);
   const [ accountNumber, setAccountNumber ] = useState("");
   const [ routes, setRoutes ] = useState<RouteData[]>();
+  const [ signedUp, setSignedUp ] = useState(false);
+  const navigate = useNavigate();
   const userDetails = JSON.parse(`${localStorage.getItem("userDetails")}`);
   const token = userDetails.token;
   
+
+  const closeAndReload = () => {
+    setSignedUp(false);
+    navigate("/admin/driver");
+    return;
+  }
 
   useEffect(() => {
     const getRoutes = async () => {
@@ -95,6 +114,12 @@ const Form = () => {
     const result: any = await res.json();
     console.log("result: ", result);
     setLoading(false);
+    if(result.message === "Driver added"){
+      setSignedUp(true);
+      // window.location.reload();
+    }else{
+      alert(`Error: ${result.status}`);
+    }
     // if (res.status === 200) {
     //   // navigate(`/checkemail/${email}`)
     //   //go to dashboard- user or admin dashboard
@@ -192,6 +217,17 @@ const Form = () => {
           </div>
         </div>
       </div>
+      <ReactModal
+        isOpen={signedUp}
+        shouldCloseOnOverlayClick={true}
+        contentLabel={"Fund wallet"}
+        style={customStyles}>
+        
+        <button onClick={closeAndReload}
+          className='walletpage-closeModal'>
+          X</button>
+        <PromptInfo header="Driver added successfully." handleClickClose={closeAndReload}/>
+      </ReactModal>
       {/* <Button bookTrip={""} formText="Sign up driver" text={""} /> */}
      <Button text={`${loading? "Signing up..." : "Sign Up"}`} additionalClasses={'successButton dashboardButton'}  handleClick={handleSubmit}/>
           </form>  

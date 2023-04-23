@@ -53,6 +53,8 @@ export const FormModal = () => {
     
   return (
       <Card
+      height='inherit !important'
+      width='inherit !important'
           headerText='Fund Wallet'
         //    button={<Button text={'Submit'} additionalClasses={'successButton'} />}
           additionalNode={
