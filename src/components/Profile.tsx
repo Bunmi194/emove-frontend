@@ -23,26 +23,7 @@ const customStyles = {
   }
 };
 
-const dumRoute = {
-  _id: "",
-  fullName: "",
-  routeOfOperation: "",
-  phoneNumber: "",
-  accountNumber: "",
-  validId: "",
-  photo: ""
-}
 
-const dumAdmin = {
-  token: "",
-  user: {
-    _id: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  }
-}
 
 const dumDriver = {
   accountNumber: "",
@@ -67,6 +48,7 @@ const Profile = () => {
   // console.log("routeDetails: ", routeDetails);
   // console.log("adminDetails: ", adminDetails);
   // console.log("driverDetails: ", driverDetails);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ drivers, setDrivers ] = useState();
   const [selectedValue, setSelectedValue] = useState();
   const [selectedValueId, setSelectedValueId] = useState("");
@@ -90,6 +72,7 @@ const Profile = () => {
   console.log("routeDetails: ",routeDetails)
   console.log("adminDetails: ",adminDetails)
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const chooseRoute = (id:string) => {
     const route = routeDetails?.filter((route:RouteData) => route._id === id) as RouteData[];
     return `${route[0].pickUpStation} - ${route[0].destination}`;
@@ -184,6 +167,7 @@ const Profile = () => {
     
     // setRouteDetails(JSON.parse(`${localStorage.getItem('routeDetails')}`));
     setDriverDetails(JSON.parse(`${localStorage.getItem('driverDetails')}`));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
