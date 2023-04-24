@@ -36,6 +36,12 @@ export const LoginPage = () => {
   //   console.log("result: ",result);
   // }
 
+  //https://emove-teamc-new.onrender.com/auth/google
+
+  const googleLogin = () => {
+    window.location.href = "https://emove-teamc-new.onrender.com/auth/google"
+  }
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if(!email || !password){
@@ -132,7 +138,7 @@ export const LoginPage = () => {
                     <Link to='/signup'>Create account</Link>
                   </p>
                 </div>
-                {/* <div className='google__oauth'>
+                <div className='google__oauth'>
                   <button className='google__oauth-child' onClick={googleLogin}>
                     <img src='/google.png' alt='google signin'/>
                     <p>Login with Google</p>
@@ -140,7 +146,7 @@ export const LoginPage = () => {
                   <div>
 
                   </div>
-                </div> */}
+                </div>
     
 
               </div>

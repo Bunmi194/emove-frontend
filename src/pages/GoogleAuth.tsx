@@ -64,6 +64,7 @@ const GoogleAuth = () => {
     return;
   }
 
+  //https://emove-teamc-new.onrender.com
   const validateUserDetails = async () => {
     //send post request with token to validate
     const user = await fetch(`https://emove-teamc-new.onrender.com/v1/users/verifytoken`, {
@@ -77,6 +78,8 @@ const GoogleAuth = () => {
 
     const result = await user.json();
     console.log("result: ", result);
+    console.log("result: ", result.validate.email);
+    console.log("result: ", result.validate.email === userDetails.user.email);
 
     if(result.validate.email && (result.validate.email === userDetails.user.email)){
       //success
