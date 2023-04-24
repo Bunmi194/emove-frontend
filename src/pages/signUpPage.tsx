@@ -100,7 +100,7 @@ export const SignUpPage = () => {
                     <option value="male" >Male</option>
                     <option value="female" selected={Boolean(gender === "female")}>Female</option>
                   </select>
-                  <label htmlFor="signUp__dateOfBirth">Last Name:</label>
+                  <label htmlFor="signUp__dateOfBirth">Date of Birth:</label>
                   <input
                     id="signUp__dateOfBirth"
                     type='date'
