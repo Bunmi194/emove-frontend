@@ -1,0 +1,48 @@
+.successCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    gap: 5px;
+    width: 40%;
+    height: 40%;
+    margin: auto;
+
+    /* White */
+
+    background: #ffffff;
+    border-radius: 24px;
+        /* margin-top: -76px; */
+  }
+
+    .header_text {
+    color: #012a4a;
+    text-align: center;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+   .form-items{
+    width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-top: -15px;
+  }
+  .form-items p {
+    width: 100%;
+    color: #101828;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0;
+    text-align: center;
+  }
+  .p_text{
+    color: #012a4a;
+    text-align: center;
+    font-size: 14px;
+    width: 79%;
+    margin: 0 auto;
+  }

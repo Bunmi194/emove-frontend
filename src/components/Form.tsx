@@ -157,7 +157,7 @@ const Form = () => {
       </div>
       <div className="form_Dashboard_field">
         <label className="form_Dashboard_label" htmlFor="route">
-          Route of operation
+          Route of Operation
         </label>
         <div className="form_Dashboard_inputbox">
           <select className="form_Dashboard_route" onChange={(e)=>{
@@ -175,7 +175,7 @@ const Form = () => {
       </div>
       <div className="form_Dashboard_field">
         <label className="form_Dashboard_label" htmlFor="phone">
-          Phone number
+          Phone Number
         </label>
         <div className="form_Dashboard_inputbox">
           <input
@@ -188,7 +188,7 @@ const Form = () => {
       </div>
       <div className="form_Dashboard_field">
         <label className="form_Dashboard_label" htmlFor="Account">
-          Account Nnumber
+          Account Number
         </label>
         <div className="form_Dashboard_inputbox">
           <input

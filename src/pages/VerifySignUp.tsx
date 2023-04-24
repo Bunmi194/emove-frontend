@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from '../components/Button'
 import { SuccessIcon } from '../assets/SuccessIcon';
-import { Card } from '../components/Card';
+import { SuccessCard } from '../components/SuccessCard';
 
 
 export const VerifySignUp = () => {
@@ -32,7 +32,7 @@ export const VerifySignUp = () => {
     {
         state && (
             <div style={{ backgroundColor: '#F2F4F7', height: '100vh' }}>
-        <Card
+        <SuccessCard
           icon={<SuccessIcon />}
           headerText={'Account verified successfully'}
           bodyText={
