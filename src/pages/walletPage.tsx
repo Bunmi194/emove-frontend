@@ -173,7 +173,7 @@ export const WalletPage = () => {
                       <button onClick={handleCloseModal}
                         className='walletpage-closeModal'>
                         X</button>
-                       <FormModal/>
+                       <FormModal />
                       </ReactModal>
                      
                    

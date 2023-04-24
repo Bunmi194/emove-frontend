@@ -110,15 +110,17 @@ const Form = () => {
       },
       body: JSON.stringify({ fullName, routeOfOperation: routeId, phoneNumber,
         accountNumber, validId: imageId, photo: image })
-    })
+    });
     const result: any = await res.json();
     console.log("result: ", result);
     setLoading(false);
     if(result.message === "Driver added"){
       setSignedUp(true);
+      return;
       // window.location.reload();
     }else{
       alert(`Error: ${result.status}`);
+      return;
     }
     // if (res.status === 200) {
     //   // navigate(`/checkemail/${email}`)

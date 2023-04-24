@@ -6,6 +6,19 @@
     background: #F2F4F7;;
 }
 
+.signup-form-items{
+  padding: 2rem;
+  margin-top: 1rem;
+}
+.choose-bank{
+  margin-top: 8rem;
+}
+.choose-bank h2{
+  text-align: center;
+}
+.closePopUp{
+  cursor: pointer;
+}
 .left-content-container{
     /* display: flex;
     flex-direction: column;

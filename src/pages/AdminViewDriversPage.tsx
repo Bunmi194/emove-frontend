@@ -157,6 +157,7 @@ export const AdminViewDriversPage = () => {
         console.log("result: ", result);
         if(result.message === "Successful"){
           setDeleted(true);
+          window.location.href = "https://main--emove-teamc.netlify.app/#/admin/driver";
         }else{
           alert(`Error: ${result.message}`);
         }
