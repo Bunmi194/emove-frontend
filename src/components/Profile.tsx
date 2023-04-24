@@ -149,7 +149,7 @@ const Profile = () => {
     console.log("update result: ", result);
     setUpdateModal(false);
     if(result.message === "Successful"){
-      window.location.href = "https://main--emove-teamc.netlify.app/#/admin/driver";
+      window.location.href = "https://emove-teamc.netlify.app/#/admin/driver";
       
     }
   }

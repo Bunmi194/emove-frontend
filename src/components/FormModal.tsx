@@ -25,7 +25,7 @@ export const FormModal = () => {
   }
 
   const closeForm = () => {
-    window.location.href = "https://main--emove-teamc.netlify.app/#/user/wallet"
+    window.location.href = "https://emove-teamc.netlify.app/#/user/wallet"
   }
     
     const onHandleClick = async (e:any) => {

@@ -60,7 +60,8 @@ export const EditPriceModal = ({showModal, setShowModal}:any) => {
         if(result.message === "Route updated successfully"){
           setPriceLoading(false);
           alert("Route updated successfully");
-          window.location.href = "https://main--emove-teamc.netlify.app/#/admin/pricing";
+          //https://emove-teamc.netlify.app/#/user/wallet
+          window.location.href = "https://emove-teamc.netlify.app/#/admin/pricing";
           // window.location.reload();
           //modal
           setUpdated(true);
