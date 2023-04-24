@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Card } from './Card'
 import '../styles/signup.styles.css'
 import { Button } from './Button'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 
 
@@ -14,7 +14,7 @@ export const FormModal = () => {
     const [email, setEmail] = useState(`${data.user.email}`);
     const [amount, setAmount] = useState("");
     const [showModal, setShowModal] = useState(false);
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
    
 
 
