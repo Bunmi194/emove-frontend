@@ -286,7 +286,7 @@ export const AdminViewDriversPage = () => {
                           <button onClick={closeAndReload}
                             className='walletpage-closeModal'>
                             X</button>
-                          <PromptInfo header="Driver added successfully." handleClickClose={closeAndReload}/>
+                          <PromptInfo header="Driver has been deleted." handleClickClose={closeAndReload}/>
                       </ReactModal>
                 </td>
                 <td className="view-drivers_driver">
