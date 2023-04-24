@@ -1,6 +1,6 @@
 import Form from "../components/Form";
 import "../styles/_driverDashboard.styles.css"
-import rec from "../assets/rec.png";
+
 import { Link } from "react-router-dom";
 
 const Drivers = () => {
@@ -13,7 +13,7 @@ const Drivers = () => {
       <div className="bottom">
         <Form />
         <div className="img">
-          <img src={rec} alt="..." />
+          <img src="/rec.png" alt="Backgroung bus" />
           <h2>Board our vehicles anywhere in Lagos at regular rates</h2>
         </div>
         </div>

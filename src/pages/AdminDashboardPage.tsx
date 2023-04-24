@@ -20,7 +20,7 @@ export const AdminDashboardPage = () => {
   // console.log("userDetails: ", userDetails)
 
   const fetchDriversCount = async () => {
-    const driversCount = await fetch("http://localhost:3030/v1/users/drivers/count", {
+    const driversCount = await fetch("https://emove-teamc-new.onrender.com/v1/users/drivers/count", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const AdminDashboardPage = () => {
   }
 
   const fetchPassengersCount = async () => {
-    const passengersCount = await fetch("http://localhost:3030/v1/users/passengers/count", {
+    const passengersCount = await fetch("https://emove-teamc-new.onrender.com/v1/users/passengers/count", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

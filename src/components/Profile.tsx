@@ -93,7 +93,7 @@ const Profile = () => {
   }
   
   const getDrivers = async () => {
-    const response = await fetch(`http://localhost:3030/v1/users/drivers`, {
+    const response = await fetch(`https://emove-teamc-new.onrender.com/v1/users/drivers`, {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -136,7 +136,7 @@ const Profile = () => {
 
   const updateDriverRecord = async () => {
     setUpdateModal(true);
-    const response = await fetch(`http://localhost:3030/v1/users/edit-driver/${driverId}`, {
+    const response = await fetch(`https://emove-teamc-new.onrender.com/v1/users/edit-driver/${driverId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

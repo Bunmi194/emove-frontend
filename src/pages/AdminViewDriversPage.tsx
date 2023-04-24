@@ -143,7 +143,7 @@ export const AdminViewDriversPage = () => {
       const token = userDetails.token;
       if(drivers){
         const routeId = drivers[deleteIndex]._id;
-        const res = await fetch(`http://localhost:3030/v1/users/delete-driver/${routeId}`, {
+        const res = await fetch(`https://emove-teamc-new.onrender.com/v1/users/delete-driver/${routeId}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -169,7 +169,7 @@ export const AdminViewDriversPage = () => {
   useEffect(() => {
     console.log("token: ", token)
     const getDrivers = async () => {
-      const response = await fetch(`http://localhost:3030/v1/users/drivers`, {
+      const response = await fetch(`https://emove-teamc-new.onrender.com/v1/users/drivers`, {
         method: "GET",
         headers: {
           "Access-Control-Allow-Origin": "*",

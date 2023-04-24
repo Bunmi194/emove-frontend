@@ -16,6 +16,42 @@ a {
   height: 100%;
 }
 
+.google__oauth{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  text-align: center;
+  width: 80%;
+
+}
+
+.google__oauth button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-radius: 5px;background: rgb(34,193,195);
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 1%, rgba(16,67,200,0.9598214285714286) 73%);
+  border: none !important;
+  color: #f0ebe5;
+  font-weight: bolder;
+  font-size: 18px;
+}
+.google__oauth img{
+  display: flex;
+  width: 8%;
+  text-align: center;
+}
+
+.google__oauth-child p{
+  display: flex;
+  margin-left: 5px;
+  padding-right: 10px;
+}
+
 
 .successDiv p{
   margin: 5% 2% 10%;

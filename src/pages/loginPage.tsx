@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Layout } from '../Layouts/Layout'
 import { RoadIcon } from '../assets/RoadIcon'
+// import GoogleLogin from '@leecheuk/react-google-login';
+
 import '../styles/login.styles.css'
 // import SignUpImage from '../assets/sign-up-image.png';
 
@@ -12,6 +14,27 @@ export const LoginPage = () => {
   const [ error, setError ] = useState("");
 
   const navigate = useNavigate()
+
+  // const onSuccess = (googleData:any) => {
+  //   // alert("success");
+  //   console.log(googleData)
+
+  // }
+  // const onFailure = (result:any) => {
+  //   // alert("failed")
+  //   console.log(result)
+  // }
+
+  // const googleLogin = async () => {
+  //   const apiCall = await fetch('https://emove-teamc-new.onrender.com/auth/google', {
+  //     method: "GET",
+  //     headers: {
+  //       "Access-Control-Allow-Origin": "*"
+  //     }  
+  //   });
+  //   const result = await apiCall.json();
+  //   console.log("result: ",result);
+  // }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -109,6 +132,17 @@ export const LoginPage = () => {
                     <Link to='/signup'>Create account</Link>
                   </p>
                 </div>
+                {/* <div className='google__oauth'>
+                  <button className='google__oauth-child' onClick={googleLogin}>
+                    <img src='/google.png' alt='google signin'/>
+                    <p>Login with Google</p>
+                  </button>
+                  <div>
+
+                  </div>
+                </div> */}
+    
+
               </div>
             }
             rightContent={

@@ -25,6 +25,7 @@ import { AdminDriversPage } from './pages/AdminDriversPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { AdminViewDriversPage } from './pages/AdminViewDriversPage';
 import { VerifySignUp } from './pages/VerifySignUp';
+import  GoogleAuth  from "./pages/GoogleAuth";
 
 // import tw from "tailwind-styled-components";
 
@@ -34,9 +35,10 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} ></Route>
       <Route path="/signup" element={<SignUpPage />} ></Route>
       <Route path="/login" element={<LoginPage />} ></Route>
-      <Route path="/" element={<LandingPage />} ></Route>
+      <Route path="/auth/google" element={<GoogleAuth />} ></Route>
       <Route path="/users/verify/:token" element={<VerifySignUp />} ></Route>
 
       <Route path="/forgotpassword" element={
