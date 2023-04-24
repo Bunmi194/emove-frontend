@@ -4,18 +4,12 @@ import { SuccessIcon } from '../assets/SuccessIcon'
 import { EmailCard } from '../components/EmailCard';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { query } from 'express';
+// import { query } from 'express';
 // import { useJwt } from "react-jwt";
 // import jwt from "jsonwebtoken";
 
-interface DecodedToken {
-  id: number;
-  email: string;
-  iat: number;
-}
-interface MyUseJwt {
-  decode: (token: string) => DecodedToken | null;
-}
+
+
 const GoogleAuth = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,12 +30,8 @@ const GoogleAuth = () => {
   const _id = queryParams.get("_id");
   const __v = 0;
 
-  const secret = "$2b$10$jkTyLUfdeZ3xb9gI0HWaw.o2ZYHcPCfEM24sTdkTyt3tEc2uTrrcy"
   // const { decode } = useJwt<DecodedToken>(`${secret}`) as unknown as MyUseJwt;
   
-const verifyToken = async (token:string) => {
-  //make request to backend to verify token
-};
 
 
   const userDetails = {
@@ -100,6 +90,7 @@ const verifyToken = async (token:string) => {
 
   useEffect(()=>{
     validateUserDetails()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
